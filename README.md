@@ -7,12 +7,6 @@ A Python-based financial investment rate calculation system using FastAPI, focus
 
 ## Key Modifications and Implementations
 
-### Code Structure Refactoring
-- Translated entire codebase from Spanish to English
-- Removed redundant routers and consolidated functionality
-- Updated naming conventions across files
-- Simplified project structure
-
 ### Services Implemented
 1. **Calculadora Service**:
    - `calculate_expired_rate()`: Calculates expired rates for banks
