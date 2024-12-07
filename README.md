@@ -48,7 +48,7 @@ Un sistema de cálculo de tasas de inversión financiera basado en Python y Fast
 1. **Clonar el Repositorio**
 
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:SaraHdez02/mejorCDT.git
    cd mejorCDT
    ```
 
