@@ -106,27 +106,6 @@ mejorCDT/
     └── bank_rates.csv
 ```
 
-## Elementos No Resueltos / Mejoras Potenciales
-- Añadir un manejo de errores más completo
-- Implementar registro de logs
-- Crear opciones de filtrado más granulares
-- Añadir autenticación para cálculos financieros
-
-## Consideraciones de Seguridad
-- Validación básica de entrada implementada
-- Se recomienda añadir una autenticación más robusta
-- Validar y sanitizar todos los datos de entrada
-
-## Entorno de Desarrollo
-- Ubicación: `/home/sarahdez02/Documents/Test Mejor CDT/mejorCDT/`
-- Enfoque principal de desarrollo: Cálculos de tasas financieras y servicios de API
-
-## Notas Especiales
-- Énfasis en nombres en inglés
-- Uso de type hinting en todo el código
-- Docstrings para todas las funciones
-- Diseño modular con separación de responsabilidades
-
 ## Próximos Pasos
 1. Mejorar el manejo de errores
 2. Añadir pruebas más completas
