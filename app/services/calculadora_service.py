@@ -15,16 +15,12 @@ def calculate_expired_rate(effective_annual_rate, target_period, csv_file):
         list: Expired period rate for each bank.
     """
     df = read_csv(csv_file)
-    expired_rates = {}
+    expired_rates = []
     for _, row in df.iterrows():
         bank_id = row["banco"]
-        rate = row["tasa"]
-        expired_rate = ((1 + rate) ** (target_period / 365)) - 1
-        if bank_id not in expired_rates:
-            expired_rates[bank_id] = expired_rate
-        else:
-            expired_rates[bank_id] = max(expired_rates[bank_id], expired_rate)
-    return [{"bank": bank_id, "expired_rate": rate} for bank_id, rate in expired_rates.items()]
+        expired_rate = ((1 + effective_annual_rate) ** (target_period / 365)) - 1
+        expired_rates.append({"bank": bank_id, "expired_rate": expired_rate})
+    return expired_rates
 
 
 def calculate_roi(amount, term_in_days, csv_file):
@@ -46,10 +42,8 @@ def calculate_roi(amount, term_in_days, csv_file):
             if row["minmonto"] <= amount <= row["maxmonto"] and row["minplazo"] <= term_in_days <= row["maxplazo"]:
                 profitability = amount * (row["tasa"] / 100) * (term_in_days / 365)
                 bank_id = row["banco"]
-                if bank_id not in results:
+                if bank_id not in results or profitability > results[bank_id]:
                     results[bank_id] = profitability
-                else:
-                    results[bank_id] += profitability
     return [{"bank": bank_id, "total_profitability": total_profit} for bank_id, total_profit in results.items()]
 
 
@@ -73,6 +67,4 @@ def find_rates(amount, term_in_days, bank_file):
             rate = row["tasa"]
             if bank_id not in rates:
                 rates[bank_id] = rate
-            else:
-                rates[bank_id] = max(rates[bank_id], rate)
     return [{"bank": bank_id, "effective_annual_rate": rate} for bank_id, rate in rates.items()]
